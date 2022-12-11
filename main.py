@@ -23,8 +23,18 @@ def  disconnected(client):
 
 def  message(client , feed_id , payload):
     print("Nhan du lieu: " + payload)
+# if feed_id == AIO_FEED_IDS[0]:
+#        print("Nhan du lieu LED: " + payload)
+#    elif feed_id == AIO_FEED_IDS[1]:
+#        print("Nhan du lieu FAN: " + payload)
+#    elif feed_id == AIO_FEED_IDS[2]:
+#        print("Nhan du lieu  DOOR: " + payload)
+#    elif feed_id == AIO_FEED_IDS[3]:
+#        print("Nhan du lieu TEMP: " + payload)
+#    elif feed_id == AIO_FEED_IDS[4]:
+#       print("Nhan du lieu GAS: " + payload)
 
-    if isMicrobitConnected:
+   if isMicrobitConnected:
         ser.write((str(payload) + "#").encode())
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
