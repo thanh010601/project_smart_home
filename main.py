@@ -69,8 +69,8 @@ def processData(data):
     try:
         if splitData[1] == "TEMP":
             client.publish("bbc-temp", splitData[2])
-        elif splitData[2] == "HUMI":
-            client.publish("bbc-humi", splitData[3])
+        elif splitData[1] == "HUMI":
+            client.publish("bbc-humi", splitData[2])
     except:
         pass
 
