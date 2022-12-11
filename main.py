@@ -23,8 +23,8 @@ def  disconnected(client):
 
 def  message(client , feed_id , payload):
     print("Nhan du lieu: " + payload)
-# if feed_id == AIO_FEED_IDS[0]:
-#        print("Nhan du lieu LED: " + payload)
+ if feed_id == AIO_FEED_IDS[0]:
+        print("Nhan du lieu LED: " + payload)
 #    elif feed_id == AIO_FEED_IDS[1]:
 #        print("Nhan du lieu FAN: " + payload)
 #    elif feed_id == AIO_FEED_IDS[2]:
