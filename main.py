@@ -4,7 +4,7 @@ import time
 import  sys
 from  Adafruit_IO import  MQTTClient
 
-AIO_FEED_IDS = ["bbc-led", "bbc-pump", "bbc-fan", "bbc-gas", "bbc-humi", "bbc-temp"]
+AIO_FEED_IDS = ["bbc-led", "bbc-fan", "bbc-gas", "bbc-humi", "bbc-temp"]
 
 AIO_USERNAME = "Tez0106"
 AIO_KEY = "aio_AKEl05RN2rDjD3C2jCBYHmlCCobB"
@@ -27,8 +27,6 @@ def  message(client , feed_id , payload):
         print("Nhan du lieu LED: " + payload)
 #    elif feed_id == AIO_FEED_IDS[1]:
 #        print("Nhan du lieu FAN: " + payload)
-#    elif feed_id == AIO_FEED_IDS[2]:
-#        print("Nhan du lieu  DOOR: " + payload)
 #    elif feed_id == AIO_FEED_IDS[3]:
 #        print("Nhan du lieu TEMP: " + payload)
 #    elif feed_id == AIO_FEED_IDS[4]:
