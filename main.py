@@ -4,10 +4,10 @@ import time
 import  sys
 from  Adafruit_IO import  MQTTClient
 
-AIO_FEED_IDS = ["bbc-led", "bbc-fan", "bbc-gas", "bbc-humi", "bbc-temp"]
+AIO_FEED_IDS = ["bbc-led", "bbc-fan", "bbc-gas", "bbc-humi", "bbc-temp", "bbc-buzzer", "bbc-curtain"]
 
 AIO_USERNAME = "Tez0106"
-AIO_KEY = "aio_AKEl05RN2rDjD3C2jCBYHmlCCobB"
+AIO_KEY = "aio_nKaM734BjhmwaEsPP2D0hn8LQAEX"
 
 def  connected(client):
     print("Ket noi thanh cong...")
@@ -23,16 +23,7 @@ def  disconnected(client):
 
 def  message(client , feed_id , payload):
     print("Nhan du lieu: " + payload)
- if feed_id == AIO_FEED_IDS[0]:
-        print("Nhan du lieu LED: " + payload)
-#    elif feed_id == AIO_FEED_IDS[1]:
-#        print("Nhan du lieu FAN: " + payload)
-#    elif feed_id == AIO_FEED_IDS[3]:
-#        print("Nhan du lieu TEMP: " + payload)
-#    elif feed_id == AIO_FEED_IDS[4]:
-#       print("Nhan du lieu GAS: " + payload)
-
-   if isMicrobitConnected:
+    if isMicrobitConnected:
         ser.write((str(payload) + "#").encode())
 
 client = MQTTClient(AIO_USERNAME , AIO_KEY)
@@ -50,10 +41,11 @@ def getPort():
     for i in range(0, N):
         port = ports[i]
         strPort = str(port)
-        if "USB Serial Device" in strPort:
+        if "com0com - serial port emulator" in strPort:
             splitPort = strPort.split(" ")
             commPort = (splitPort[0])
     return commPort
+
 
 isMicrobitConnected = False
 if getPort() != "None":
@@ -71,11 +63,12 @@ def processData(data):
             client.publish("bbc-temp", splitData[2])
         elif splitData[1] == "HUMI":
             client.publish("bbc-humi", splitData[2])
+        elif splitData[1] == "GAS":
+            client.publish("bbc-gas", splitData[2])   
     except:
         pass
 
-    #if splitData[1] == "TEMP":
-    #    client.publish("bbc-temp", splitData[2])
+
     #if splitData[1] == "GAS":
     #   client.publish("bbc-gas", splitData[2])
 
